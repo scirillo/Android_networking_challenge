@@ -1,5 +1,5 @@
 
-Android NetworkConnect Sample
+Android NetworkConnect Challenge
 ===================================
 
 This sample demonstrates how to connect to the network and fetch raw HTML using
@@ -43,16 +43,21 @@ Screenshots
 Getting Started
 ---------------
 
-This sample uses the Gradle build system. To build this project, use the
-"gradlew build" command or use "Import Project" in Android Studio.
+The real challenge for you is to fetch the Rick and Morty API
+````
+{
+  "characters": "https://rickandmortyapi.com/api/character",
+  "locations": "https://rickandmortyapi.com/api/location",
+  "episodes": "https://rickandmortyapi.com/api/episode"
+}
+````
+To fetch the first page of the characters and modify the app as needed to show the name of the character, and the image of the character.
+All this in the background thread in order to avoid hanging on the UI thread. Only
+when the network response is ready should the work return to the main thread to update
+the UI.
 
 Support
 -------
 
 - Stack Overflow: http://stackoverflow.com/questions/tagged/android
-
-If you've found an error in this sample, please file an issue:
-https://github.com/android/connectivity
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
+- Talk to your Jaya contact.
