@@ -1,5 +1,3 @@
-
-![jaya](https://media-exp1.licdn.com/dms/image/C4E0BAQFrbiHicAxtPQ/company-logo_200_200/0?e=2159024400&v=beta&t=BQz9RsRUILUmnZ4JM6poK5XCxSAvVuefloBcLVolmR0)
 Android NetworkConnect Challenge
 ===================================
 
