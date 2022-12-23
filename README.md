@@ -30,8 +30,8 @@ for managing longer running background work.
 Pre-requisites
 --------------
 
-- Android SDK 28
-- Android Build Tools v28.0.3
+- Android SDK Min 26 - Target latest
+- Android Build Tools latest
 - Android Support Repository
 
 Screenshots
@@ -59,4 +59,4 @@ Support
 -------
 
 - Stack Overflow: http://stackoverflow.com/questions/tagged/android
-- Talk to your Jaya contact.
+- Talk to your Devsvant contact.
