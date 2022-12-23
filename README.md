@@ -59,4 +59,4 @@ Support
 -------
 
 - Stack Overflow: http://stackoverflow.com/questions/tagged/android
-- Talk to your Devsvant contact.
+- Talk to your DevSavant contact.
