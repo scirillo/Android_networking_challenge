@@ -12,8 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.networkconnect.api.ApiResponseStatus
 import com.example.android.networkconnect.api.Util
 import com.example.android.networkconnect.databinding.FragmentCharacterListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CharacterListFragment : Fragment() {
     private val viewModel: CharacterListViewModel by viewModels()
 
@@ -31,6 +32,7 @@ class CharacterListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recycler = binding.charactersRecycler
+
         recycler.layoutManager = LinearLayoutManager(requireActivity())
         val adapter = CharacterListAdapter()
         recycler.adapter = adapter

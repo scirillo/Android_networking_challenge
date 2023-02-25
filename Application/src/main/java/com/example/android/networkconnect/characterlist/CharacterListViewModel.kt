@@ -6,17 +6,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.networkconnect.api.ApiResponseStatus
 import com.example.android.networkconnect.api.domain.Charter
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CharacterListViewModel : ViewModel() {
+@HiltViewModel
+class CharacterListViewModel @Inject constructor(
+    private val characterRepository: CharacterTasks
+): ViewModel() {
     var characterList = MutableLiveData<List<Charter>>(listOf())
         private set
 
     var status = MutableLiveData<ApiResponseStatus<Any>?>(null)
         private set
-
-
-    private val characterRepository = CharacterRepository()
 
     init {
         getCharacters()

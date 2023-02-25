@@ -11,7 +11,5 @@ data class Charter(
     val species: String,
     val type: String,
     val gender: String,
-    val imageUrl: String,
-    val url: String,
-    val created: String
+    val imageUrl: String
 ) : Parcelable

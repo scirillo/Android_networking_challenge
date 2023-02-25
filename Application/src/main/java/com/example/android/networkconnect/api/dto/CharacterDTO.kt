@@ -9,7 +9,5 @@ class CharacterDTO(
     val species: String,
     val type  : String,
     val gender  : String,
-    @field:Json(name = "image") val imageUrl: String,
-    val url: String,
-    val created: String
+    @field:Json(name = "image") val imageUrl: String
 )

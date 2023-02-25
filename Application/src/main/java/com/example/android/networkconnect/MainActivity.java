@@ -29,6 +29,8 @@ import com.example.android.networkconnect.characterlist.CharacterListViewModel;
 
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 
 /**
  * Sample Activity demonstrating how to connect to the network and fetch raw
@@ -36,6 +38,7 @@ import java.util.List;
  * <p>
  * This sample uses a TextView to display output.
  */
+@AndroidEntryPoint
 public class MainActivity extends FragmentActivity {
     // Reference to the TextView showing fetched data, so we can clear it with a button
     // as necessary.

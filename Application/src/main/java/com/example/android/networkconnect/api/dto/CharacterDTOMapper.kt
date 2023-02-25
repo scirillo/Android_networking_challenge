@@ -12,9 +12,7 @@ class CharacterDTOMapper {
             characterDTO.species,
             characterDTO.type,
             characterDTO.gender,
-            characterDTO.imageUrl,
-            characterDTO.url,
-            characterDTO.created,
+            characterDTO.imageUrl
         )
     }
 
