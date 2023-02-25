@@ -16,31 +16,33 @@
 
 package com.example.android.networkconnect;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+import com.example.android.networkconnect.characterlist.CharacterListFragment;
+import com.example.android.networkconnect.characterlist.CharacterListViewModel;
+
+import java.util.List;
+
+
 /**
  * Sample Activity demonstrating how to connect to the network and fetch raw
  * HTML. It uses a Fragment that encapsulates the network operations on an AsyncTask.
- *
+ * <p>
  * This sample uses a TextView to display output.
  */
-public class MainActivity extends FragmentActivity implements DownloadCallback {
-
+public class MainActivity extends FragmentActivity {
     // Reference to the TextView showing fetched data, so we can clear it with a button
     // as necessary.
     private TextView mDataText;
 
     // Keep a reference to the NetworkFragment which owns the AsyncTask object
     // that is used to execute network ops.
-    private NetworkFragment mNetworkFragment;
 
     // Boolean telling us whether a download is in progress, so we don't trigger overlapping
     // downloads with consecutive button clicks.
@@ -50,8 +52,6 @@ public class MainActivity extends FragmentActivity implements DownloadCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_main);
-        mDataText = (TextView) findViewById(R.id.data_text);
-        mNetworkFragment = NetworkFragment.getInstance(getSupportFragmentManager(), "https://www.google.com");
     }
 
     @Override
@@ -70,61 +70,27 @@ public class MainActivity extends FragmentActivity implements DownloadCallback {
                 return true;
             // Clear the text and cancel download.
             case R.id.clear_action:
-                finishDownloading();
-                mDataText.setText("");
+                 finishDownloading();
+                // mDataText.setText("");
                 return true;
         }
         return false;
     }
 
+    private void finishDownloading() {
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        if (fragments.size() > 0) {
+            Fragment currentFragment = fragments.get(0);
+            if (currentFragment != null) {
+                getSupportFragmentManager().beginTransaction().remove(currentFragment).commit();
+
+            }
+        }
+    }
+
     private void startDownload() {
-        if (!mDownloading && mNetworkFragment != null) {
-            // Execute the async download.
-            mNetworkFragment.startDownload();
-            mDownloading = true;
-        }
-    }
-
-    @Override
-    public void updateFromDownload(String result) {
-        if (result != null) {
-            mDataText.setText(result);
-        } else {
-            mDataText.setText(getString(R.string.connection_error));
-        }
-    }
-
-    @Override
-    public NetworkInfo getActiveNetworkInfo() {
-        ConnectivityManager connectivityManager =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo;
-    }
-
-    @Override
-    public void finishDownloading() {
-        mDownloading = false;
-        if (mNetworkFragment != null) {
-            mNetworkFragment.cancelDownload();
-        }
-    }
-
-    @Override
-    public void onProgressUpdate(int progressCode, int percentComplete) {
-        switch(progressCode) {
-            // You can add UI behavior for progress updates here.
-            case Progress.ERROR:
-                break;
-            case Progress.CONNECT_SUCCESS:
-                break;
-            case Progress.GET_INPUT_STREAM_SUCCESS:
-                break;
-            case Progress.PROCESS_INPUT_STREAM_IN_PROGRESS:
-                mDataText.setText("" + percentComplete + "%");
-                break;
-            case Progress.PROCESS_INPUT_STREAM_SUCCESS:
-                break;
-        }
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.fragment_container, CharacterListFragment.newInstance(), null).
+                commit();
     }
 }
