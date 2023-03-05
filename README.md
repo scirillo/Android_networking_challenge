@@ -19,7 +19,7 @@ a network connection, and if so, what type of connection it is.
 
 Using an [`AsyncTaskLoader`][6] or an [`IntentService`][5] are two common alternatives
 for managing longer running background work.
-
+safasfasf
 [1]: https://developer.android.com/reference/android/net/ConnectivityManager.html
 [2]: https://developer.android.com/reference/android/net/NetworkInfo.html
 [3]: https://developer.android.com/reference/android/os/AsyncTask.html
